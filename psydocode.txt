@@ -1,0 +1,7 @@
+Fase 2
+Maak een kopie van choosenColors
+Als de userInput gelijk is aan choosenColors, geef je een Victory screen maar als userInput niet gelijk is aan choosenColors dan 
+Haal je eerst de userInput leeg
+
+
+

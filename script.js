@@ -1,7 +1,7 @@
 var colors = ['red', 'green', 'yellow', 'blue', 'orange', 'purple', 'white', 'pink'];
 var choosenColors = [];
 var userInput = [];
-var result = [];
+var faseCheck = "";
 
 function randomNumber() {
 	return colors[Math.round(Math.random() * 7)];
@@ -42,7 +42,11 @@ function staticHTML() {
 			var button = document.getElementById(buttonId);
 
 			button.addEventListener("click", function(event) {
-				compareFase1((event.target.getAttribute("id")));
+				userInput.push(event.target.id);
+				var result = compareFase1();
+				compareFase1();
+				console.log(userInput);
+				compareFase2(result);
 			});
 	    }
 
@@ -51,10 +55,8 @@ function staticHTML() {
 
 //Nu begint de 1e fase van het comparen, hier kijken we of de colors goed staan.
 
-function compareFase1(color){
-	userInput.push(color);
-	
-	console.log(userInput);
+function compareFase1(){
+	var result = [];
 
 	if (userInput.length == 4) {
 		for (var i = 0; i < choosenColors.length; i++) {
@@ -64,8 +66,19 @@ function compareFase1(color){
 				result.push("fout")
 			}
 		}
+	faseCheck = true;
+	}
+	return result;
+}
 
-		console.log(result);
+function compareFase2(result) {
+
+	if (faseCheck){
+		console.log(userInput);
+		console.log(choosenColors);
+		if (userInput === choosenColors){
+			console.log("Hoi");
+		}
 	}
 }
 
