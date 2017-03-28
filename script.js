@@ -1,11 +1,17 @@
+//De arrays die we gaan gebruiken in ons script.
+
 var colors = ['red', 'green', 'yellow', 'blue', 'orange', 'purple', 'white', 'pink'];
 var choosenColors = [];
 var userInput = [];
 var faseCheck = "";
 
+//Met de randomNumber functie genereren we een random getal van 1 tot 8.
+
 function randomNumber() {
 	return colors[Math.round(Math.random() * 7)];
 }
+
+//Hier mee word de randomnumber van de randomNumber functie gepakt en een color van gemaakt.
 
 function randomColors() {
 	for (i = 0; i < 4; i++){
@@ -16,7 +22,7 @@ function randomColors() {
 
 console.log(randomColors());
 
-
+//Met de static HTML function maken we statisch de HTML zodat alles via javascript gaat.
 
 function staticHTML() {
 	var buttonDiv = document.createElement("div");
@@ -42,9 +48,14 @@ function staticHTML() {
 			var button = document.getElementById(buttonId);
 
 			button.addEventListener("click", function(event) {
+
 				userInput.push(event.target.id);
-				var result = compareFase1();
-				compareFase1();
+				if (userInput.length == 4) {
+					var result = compareFase1();
+					faseCheck = true;
+				}
+				//Hier roepen we de functies aan als er op de colors buttons geklikt word.
+				//compareFase1();
 				console.log(userInput);
 				compareFase2(result);
 			});
@@ -57,8 +68,6 @@ function staticHTML() {
 
 function compareFase1(){
 	var result = [];
-
-	if (userInput.length == 4) {
 		for (var i = 0; i < choosenColors.length; i++) {
 			if (userInput[i] == choosenColors[i]) {
 				result.push("goed")
@@ -66,18 +75,24 @@ function compareFase1(){
 				result.push("fout")
 			}
 		}
-	faseCheck = true;
-	}
 	return result;
 }
+
+//De 2e fase van het comparen, hier kijken we of een color voorkomt in het de random color code van de computer.
 
 function compareFase2(result) {
 
 	if (faseCheck){
 		console.log(userInput);
 		console.log(choosenColors);
-		if (userInput === choosenColors){
-			console.log("Hoi");
+		var equal = 0;
+		for (var a = 0; a < userInput.length; a++){
+			if (userInput[i] == choosenColors[i]){
+				equal++;
+			}
+		}
+		if (equal == userInput.length){
+			console.log('all equal');
 		}
 	}
 }
