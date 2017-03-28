@@ -50,6 +50,8 @@ function staticHTML() {
 			button.addEventListener("click", function(event) {
 
 				userInput.push(event.target.id);
+
+				// Met deze if statement word er gecheckt of de gebruiker fase 1 is doorgegaan, fase 2 kan niet betreden worden als fase 1 niet klaar is.
 				if (userInput.length == 4) {
 					var result = compareFase1();
 					faseCheck = true;
@@ -87,8 +89,8 @@ function compareFase2(result) {
 		console.log(choosenColors);
 		var equal = 0;
 		for (var a = 0; a < userInput.length; a++){
-			if (userInput[i] == choosenColors[i]){
-				equal++;
+			if (userInput[a] == choosenColors[a]){
+				equal ++;
 			}
 		}
 		if (equal == userInput.length){
