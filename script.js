@@ -84,17 +84,25 @@ function compareFase1(){
 
 function compareFase2(result) {
 
+	//Met dit if statement loopen we door de userInput heen en de choosenColors, daarmee kijken we of ze wel of niet goed zijn.
 	if (faseCheck){
-		console.log(userInput);
-		console.log(choosenColors);
 		var equal = 0;
 		for (var a = 0; a < userInput.length; a++){
 			if (userInput[a] == choosenColors[a]){
 				equal ++;
 			}
 		}
+
 		if (equal == userInput.length){
 			console.log('all equal');
+		} else {
+			userInputUpdated = userInput.slice();
+			userInput = [];
+				for (var i = 0; i < choosenColors.length; i++) {
+					for (var j = 0; j < choosenColors.length; j++) {
+						
+					}
+				}
 		}
 	}
 }
