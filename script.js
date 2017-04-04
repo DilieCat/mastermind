@@ -50,8 +50,12 @@ function staticHTML() {
 			button.addEventListener("click", function(event) {
 
 				userInput.push(event.target.id);
+				if (userInput.length == 4){
+					checkColor();
+				}
+				console.log(userInput);
 
-				// Met deze if statement word er gecheckt of de gebruiker fase 1 is doorgegaan, fase 2 kan niet betreden worden als fase 1 niet klaar is.
+/*				// Met deze if statement word er gecheckt of de gebruiker fase 1 is doorgegaan, fase 2 kan niet betreden worden als fase 1 niet klaar is.
 				if (userInput.length == 4) {
 					var result = compareFase1();
 					faseCheck = true;
@@ -59,54 +63,23 @@ function staticHTML() {
 				//Hier roepen we de functies aan als er op de colors buttons geklikt word.
 				//compareFase1();
 				console.log(userInput);
-				compareFase2(result);
+				compareFase2(result);*/
 			});
 	    }
 
 }
 
-
-//Nu begint de 1e fase van het comparen, hier kijken we of de colors goed staan.
-
-function compareFase1(){
-	var result = [];
-		for (var i = 0; i < choosenColors.length; i++) {
-			if (userInput[i] == choosenColors[i]) {
-				result.push("goed")
-			} else {
-				result.push("fout")
-			}
-		}
-	return result;
-}
-
-//De 2e fase van het comparen, hier kijken we of een color voorkomt in het de random color code van de computer.
-
-function compareFase2(result) {
-
-	//Met dit if statement loopen we door de userInput heen en de choosenColors, daarmee kijken we of ze wel of niet goed zijn.
-	if (faseCheck){
-		var equal = 0;
-		for (var a = 0; a < userInput.length; a++){
-			if (userInput[a] == choosenColors[a]){
-				equal ++;
-			}
-		}
-
-		if (equal == userInput.length){
-			console.log('all equal');
+function checkColor() {
+	for (var i = 0; i < userInput.length; i++) {
+		if (userInput[i] == choosenColors[i]){
+			console.log('Goeie positie');
+		} else if (choosenColors.indexOf(userInput[i]) > -1) {
+			console.log('Staat erin maar op de verkeerde plek');
 		} else {
-			userInputUpdated = userInput.slice();
-			userInput = [];
-				for (var i = 0; i < choosenColors.length; i++) {
-					for (var j = 0; j < choosenColors.length; j++) {
-						
-					}
-				}
+			console.log('Niet de goeie positie');
 		}
 	}
 }
-
 
 
 staticHTML();
