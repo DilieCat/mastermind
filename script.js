@@ -3,7 +3,6 @@
 var colors = ['red', 'green', 'yellow', 'blue', 'orange', 'purple', 'white', 'pink'];
 var choosenColors = [];
 var userInput = [];
-var faseCheck = "";
 
 //Met de randomNumber functie genereren we een random getal van 1 tot 8.
 
@@ -54,30 +53,36 @@ function staticHTML() {
 					checkColor();
 				}
 				console.log(userInput);
-
-/*				// Met deze if statement word er gecheckt of de gebruiker fase 1 is doorgegaan, fase 2 kan niet betreden worden als fase 1 niet klaar is.
-				if (userInput.length == 4) {
-					var result = compareFase1();
-					faseCheck = true;
-				}
-				//Hier roepen we de functies aan als er op de colors buttons geklikt word.
-				//compareFase1();
-				console.log(userInput);
-				compareFase2(result);*/
 			});
 	    }
 
 }
 
+//Met de checkColor() function comparen we de colors
 function checkColor() {
+	/*Hier maken we een variable equal aan die we later gaan gebruiken als een counter in de functie, we maken een tempColorcode aan met een copy van userInput, daarmee
+	daarin pushen we de gevonden colors*/
+	var equal = 0;
+	var tempColorCode = userInput.slice();
+
+	//Hier gebeurt het comparen en gaan de kleuren door de if statements heen.
 	for (var i = 0; i < userInput.length; i++) {
 		if (userInput[i] == choosenColors[i]){
 			console.log('Goeie positie');
+			equal++;
 		} else if (choosenColors.indexOf(userInput[i]) > -1) {
+			tempColorCode[i] = 'xx';
 			console.log('Staat erin maar op de verkeerde plek');
 		} else {
 			console.log('Niet de goeie positie');
 		}
+	}
+
+	//Een if statement voor of de code wel of niet goed is, als de ingevoerde code goed is dan is het spel klaar, zoniet dan kan de gebruiker opnieuw de code invoeren.
+	if (equal == 4) {
+		console.log("Je hebt gewonnen");
+	} else {
+		userInput = [];
 	}
 }
 
