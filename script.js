@@ -63,18 +63,14 @@ function checkColor() {
 	/*Hier maken we een variable equal aan die we later gaan gebruiken als een counter in de functie, we maken een tempColorcode aan met een copy van userInput, daarmee
 	daarin pushen we de gevonden colors*/
 	var equal = 0;
-	var tempColorCode = userInput.slice();
+	var tempUserInput = userInput.slice();
+	var tempChoosenColors = choosenColors.slice();
 
 	//Hier gebeurt het comparen en gaan de kleuren door de if statements heen.
 	for (var i = 0; i < userInput.length; i++) {
 		if (userInput[i] == choosenColors[i]){
-			console.log('Goeie positie');
 			equal++;
-		} else if (choosenColors.indexOf(userInput[i]) > -1) {
-			tempColorCode[i] = 'xx';
-			console.log('Staat erin maar op de verkeerde plek');
-		} else {
-			console.log('Niet de goeie positie');
+			tempChoosenColors[i] = 'xx';
 		}
 	}
 
@@ -82,6 +78,18 @@ function checkColor() {
 	if (equal == 4) {
 		console.log("Je hebt gewonnen");
 	} else {
+		for (var i = 0; i < userInput.length; i++) {
+					if (userInput[i] == choosenColors[i]){
+						console.log('Goeie positie');
+						equal++;
+					} else  if (tempChoosenColors.indexOf(userInput[i]) > -1) {
+						tempUserInput[i] = 'xx';
+						console.log('Staat erin maar op de verkeerde plek');
+					} else {
+						console.log('Staat er niet in');
+					}
+
+		}
 		userInput = [];
 	}
 }
